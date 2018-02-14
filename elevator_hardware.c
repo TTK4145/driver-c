@@ -25,7 +25,7 @@ void elevator_hardware_init() {
     assert(sockfd != -1 && "Unable to set up socket");
     
     struct addrinfo hints = {
-	.ai_family      = AF_UNSPEC, 
+	.ai_family      = AF_INET, 
 	.ai_socktype    = SOCK_STREAM, 
 	.ai_protocol    = IPPROTO_TCP,
     };
