@@ -15,19 +15,19 @@ void elevator_hardware_init() {
     char ip[16] = {0};
     char port[8] = {0};
     con_load("elevator_hardware.con",
-	     con_val("com_ip",   ip,   "%s")
-	     con_val("com_port", port, "%s")
-        )
-        
+        con_val("com_ip",   ip,   "%s")
+        con_val("com_port", port, "%s")
+    )
+    
     pthread_mutex_init(&sockmtx, NULL);
     
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     assert(sockfd != -1 && "Unable to set up socket");
     
     struct addrinfo hints = {
-	.ai_family      = AF_INET, 
-	.ai_socktype    = SOCK_STREAM, 
-	.ai_protocol    = IPPROTO_TCP,
+        .ai_family      = AF_INET, 
+        .ai_socktype    = SOCK_STREAM, 
+        .ai_protocol    = IPPROTO_TCP,
     };
     struct addrinfo* res;
     getaddrinfo(ip, port, &hints, &res);
